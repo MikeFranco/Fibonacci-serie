@@ -1,4 +1,4 @@
-<template>
+<template id="main">
   <div>
     <Alert message="Hay un error en la captura" />
     <Form />
@@ -13,5 +13,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#main {
+  background-color: rgba(18, 75, 197, 0.856);
+  height: 100%;
+}
 </style>

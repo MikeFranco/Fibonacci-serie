@@ -18,6 +18,7 @@
       ></b-progress>
     </b-alert>
     <!-- 
+      hay que hacer el showAlert para que se muestre el alert
       <b-button @click="showAlert" variant="info" class="m-1">
       Show alert with count-down timer
     </b-button> -->
