@@ -17,9 +17,10 @@
         height="4px"
       ></b-progress>
     </b-alert>
-    <b-button @click="showAlert" variant="info" class="m-1">
+    <!-- 
+      <b-button @click="showAlert" variant="info" class="m-1">
       Show alert with count-down timer
-    </b-button>
+    </b-button> -->
   </div>
 </template>
 
