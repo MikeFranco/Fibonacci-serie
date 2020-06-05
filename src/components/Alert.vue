@@ -24,8 +24,7 @@ export default {
   data() {
     return {
       dismissSecs: 3,
-      dismissCountDown: 0,
-      showDismissibleAlert: false
+      dismissCountDown: 0
     };
   },
   methods: {

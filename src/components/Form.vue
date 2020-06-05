@@ -26,21 +26,15 @@
                 >Calcular</b-button
               >
             </b-form>
-                <div class="w-100"></div>
             <b-col cols="4">
-              <!-- <h3 v-show="showResult">result: {{ result }}</h3> -->
               <div class="results">
-                <h3>Historial: </h3>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <div v-if="results.length > 0">
+                  <h3>Historial: </h3>
+                  <h5 v-for="(result, index) in results" :key="index"
+                    >Resultado de {{ result[0] }}: {{ result[1] }}</h5
+                  >
+                </div>
+                <h3 v-else>Aún no hay resultados </h3>
               </div>
             </b-col>
           </b-col>
@@ -56,14 +50,21 @@
 
 <script>
 import Alert from './Alert.vue';
+import { mapGetters } from 'vuex';
+
 export default {
+  computed: {
+    ...mapGetters(['getResults']),
+    results() {
+      return this.getResults;
+    }
+  },
   components: {
     Alert
   },
   data() {
     return {
       number: 0,
-      result: 0,
       showResult: false,
       errorAlert: false
     };
@@ -71,9 +72,10 @@ export default {
   methods: {
     getFibonacciNumber(number) {
       if (number >= 0) {
-        this.result = this.fibonacci(number);
+        this.$store.commit('addNewResult', [number, this.fibonacci(number)]);
         this.showResult = true;
       } else {
+        this.errorAlert = false;
         this.errorAlert = true;
       }
     },
@@ -155,7 +157,6 @@ export default {
 .results {
   margin-top: 25%;
   height: 35vh;
-  background-color: cyan;
   width: 50vh;
   overflow-y: auto;
 }
