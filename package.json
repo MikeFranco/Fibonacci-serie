@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "npm run build; push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
     "bootstrap-vue": "^2.1.0",
     "core-js": "^3.6.5",
+    "push-dir": "^0.4.1",
     "vue": "^2.6.11",
     "vuex": "^3.4.0"
   },
