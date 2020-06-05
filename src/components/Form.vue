@@ -42,7 +42,7 @@
           </b-col>
         </b-row>
       </b-container>
-      <Alert message="Por favor, ingresa un valor mayor a 0" />
+      <Alert :message="message" />
     </div>
   </div>
 </template>
@@ -63,15 +63,20 @@ export default {
   },
   data() {
     return {
-      number: ''
+      number: '',
+      message: ''
     };
   },
   methods: {
     getFibonacciNumber(number) {
-      if (number >= 0) {
+      if (number >= 0 && !number.includes('.')) {
         this.$store.commit('addNewResult', [number, this.fibonacci(number)]);
         this.number = '';
+      } else if (number.includes('.')) {
+        this.message = 'Por favor, ingresa un número entero';
+        this.$store.commit('toggleAlert');
       } else {
+        this.message = 'Por favor, ingresa un valor mayor a 0';
         this.$store.commit('toggleAlert');
       }
     },
@@ -197,7 +202,7 @@ export default {
   }
 }
 
-@media (min-width: 662px) and (max-width: 1024px){
+@media (min-width: 662px) and (max-width: 1024px) {
   .results {
     width: 28vh;
   }
