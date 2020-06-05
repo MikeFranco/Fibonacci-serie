@@ -1,24 +1,17 @@
 <template>
   <div class="alert">
     <b-alert
-      :show="dismissCountDown"
+      :show="errorAlert"
       dismissible
       fade
-      variant="danger"
+      variant="warning"
       @dismissed="dismissCountDown = 0"
       @dismiss-count-down="countDownChanged"
       class="alert"
     >
       <p>{{ message }}</p>
-      <b-progress
-        variant="danger"
-        :max="dismissSecs"
-        :value="dismissCountDown"
-        height="4px"
-      ></b-progress>
     </b-alert>
     <!-- 
-      hay que hacer el showAlert para que se muestre el alert
       <b-button @click="showAlert" variant="info" class="m-1">
       Show alert with count-down timer
     </b-button> -->
@@ -27,7 +20,7 @@
 
 <script>
 export default {
-  props: ['message'],
+  props: ['message', 'errorAlert'],
   data() {
     return {
       dismissSecs: 3,
@@ -42,15 +35,18 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     }
+  },
+  watch: {
+    errorAlert: 'showAlert'
   }
 };
 </script>
 
 <style scoped>
-  .alert {
-    max-width: 300px;
-    position: fixed;
-    top: 0;
-    left: 42%;
-  }
+.alert {
+  max-width: 300px;
+  position: fixed;
+  top: 0;
+  left: 42%;
+}
 </style>
