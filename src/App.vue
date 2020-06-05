@@ -1,4 +1,4 @@
-<template id="main">
+<template>
   <div>
     <Alert message="Hay un error en la captura" />
     <Form />
@@ -9,13 +9,7 @@
 import Alert from './components/Alert.vue';
 import Form from './components/Form.vue';
 export default {
+  name: 'App',
   components: { Alert, Form }
 };
 </script>
-
-<style scoped>
-#main {
-  background-color: rgba(18, 75, 197, 0.856);
-  height: 100%;
-}
-</style>

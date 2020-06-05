@@ -32,9 +32,11 @@ export default {};
   height: 600px;
   margin-top: 14%;
   border-radius: 4%;
+  box-shadow: 15px 15px 15px 2px #524f4f;
 }
 .col-left {
-  background-color: blue;
+  background-color: #6fbf26;
+  color: white;
   height: 100%;
   border-top-left-radius: 5%;
   border-bottom-left-radius: 5%;
