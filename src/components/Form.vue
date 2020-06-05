@@ -26,7 +26,23 @@
                 >Calcular</b-button
               >
             </b-form>
-            <h3 v-show="showResult">result: {{ result }}</h3>
+                <div class="w-100"></div>
+            <b-col cols="4">
+              <!-- <h3 v-show="showResult">result: {{ result }}</h3> -->
+              <div class="results">
+                <h3>Historial: </h3>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+              </div>
+            </b-col>
           </b-col>
         </b-row>
       </b-container>
@@ -54,7 +70,7 @@ export default {
   },
   methods: {
     getFibonacciNumber(number) {
-      if (number > 0) {
+      if (number >= 0) {
         this.result = this.fibonacci(number);
         this.showResult = true;
       } else {
@@ -135,23 +151,12 @@ export default {
     font-size: 17px;
   }
 }
-/* .row {
-  height: 600px;
-  margin-top: 14%;
-  
-  box-shadow: 15px 15px 15px 2px #524f4f;
-}
-.col-left {
-  padding-top: 20%;
-  color: white;
-  height: 100%;
-  
-}
 
-.col-right {
-  padding-top: 10%;
-  background-color: #3e3e3e;
-  height: 100%;
-  
-} */
+.results {
+  margin-top: 25%;
+  height: 35vh;
+  background-color: cyan;
+  width: 50vh;
+  overflow-y: auto;
+}
 </style>
