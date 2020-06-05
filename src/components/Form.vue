@@ -28,7 +28,7 @@
                 >
               </b-input-group-append>
             </b-input-group>
-            <b-col cols="4">
+            <b-col cols="4" class="history-div">
               <div class="results">
                 <div v-if="results.length > 0">
                   <h3>Historial: </h3>
@@ -132,7 +132,35 @@ export default {
   background-color: #ff5d0d;
 }
 
-@media (max-width: 376px) {
+.results {
+  margin-top: 25%;
+  height: 35vh;
+  width: 50vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 100px) and (max-width: 320px) {
+  .history-div {
+    padding: 0;
+  }
+  .results {
+    width: 20vh;
+  }
+  .col-left h1 {
+    font-size: 22px;
+  }
+  .col-left p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .history-div {
+    padding: 0;
+  }
+  .results {
+    width: 20vh;
+  }
   .col-left h1 {
     font-size: 25px;
   }
@@ -140,8 +168,27 @@ export default {
     font-size: 14px;
   }
 }
-
+@media (min-width: 361px) and (max-width: 376px) {
+  .history-div {
+    padding: 0;
+  }
+  .results {
+    width: 17vh;
+  }
+  .col-left h1 {
+    font-size: 25px;
+  }
+  .col-left p {
+    font-size: 14px;
+  }
+}
 @media (min-width: 377px) and (max-width: 662px) {
+  .history-div {
+    padding: 0;
+  }
+  .results {
+    width: 19vh;
+  }
   .col-left h1 {
     font-size: 30px;
   }
@@ -149,10 +196,10 @@ export default {
     font-size: 17px;
   }
 }
-.results {
-  margin-top: 25%;
-  height: 35vh;
-  width: 50vh;
-  overflow-y: auto;
+
+@media (min-width: 662px) and (max-width: 1024px){
+  .results {
+    width: 28vh;
+  }
 }
 </style>
