@@ -22,7 +22,7 @@
                 v-model="number"
                 type="number"
               ></b-form-input>
-              <b-button @click.prevent="getFibonacciNumber(number)"
+              <b-button @click="getFibonacciNumber(number)"
                 >Calcular</b-button
               >
             </b-form>
@@ -41,7 +41,6 @@
         </b-row>
       </b-container>
       <Alert
-        :errorAlert="errorAlert"
         message="Por favor, ingresa un valor mayor a 0"
       />
     </div>
@@ -75,8 +74,7 @@ export default {
         this.$store.commit('addNewResult', [number, this.fibonacci(number)]);
         this.showResult = true;
       } else {
-        this.errorAlert = false;
-        this.errorAlert = true;
+        this.$store.commit('toggleAlert');
       }
     },
     fibonacci(number, x = 0, y = 1) {

@@ -1,30 +1,38 @@
 <template>
   <div class="alert">
     <b-alert
-      :show="errorAlert"
+      :show="dismissCountDown"
       dismissible
-      fade
       variant="warning"
       @dismissed="dismissCountDown = 0"
       @dismiss-count-down="countDownChanged"
-      class="alert"
     >
       <p>{{ message }}</p>
+      <b-progress
+        variant="warning"
+        :max="dismissSecs"
+        :value="dismissCountDown"
+        height="4px"
+      ></b-progress>
     </b-alert>
-    <!-- 
-      <b-button @click="showAlert" variant="info" class="m-1">
-      Show alert with count-down timer
-    </b-button> -->
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-  props: ['message', 'errorAlert'],
+  props: ['message'],
+  computed: {
+    ...mapGetters(['getAlert']),
+    getAlertVariable() {
+      return this.getAlert;
+    }
+  },
   data() {
     return {
       dismissSecs: 3,
-      dismissCountDown: 0
+      dismissCountDown: 0,
+      dissmissableAlert: false
     };
   },
   methods: {
@@ -32,18 +40,19 @@ export default {
       this.dismissCountDown = dismissCountDown;
     },
     showAlert() {
-      this.dismissCountDown = this.dismissSecs;
+      this.dissmissableAlert = true;
+      this.dismissCountDown = this.dismissSecs
     }
   },
   watch: {
-    errorAlert: 'showAlert'
+    getAlertVariable: 'showAlert'
   }
 };
 </script>
 
 <style scoped>
 .alert {
-  max-width: 300px;
+  max-width: 400px;
   position: fixed;
   top: 0;
   left: 42%;
