@@ -15,17 +15,19 @@
             </b-row>
           </b-col>
           <b-col class="col-right">
-            <b-form inline>
+            <b-input-group>
               <b-form-input
-                class="mb-2 mr-sm-2 mb-sm-0"
                 placeholder="Ingresa el número"
                 v-model="number"
                 type="number"
+                @keyup.enter="getFibonacciNumber(number)"
               ></b-form-input>
-              <b-button @click="getFibonacciNumber(number)"
-                >Calcular</b-button
-              >
-            </b-form>
+              <b-input-group-append>
+                <b-button @click="getFibonacciNumber(number)"
+                  >Calcular</b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
             <b-col cols="4">
               <div class="results">
                 <div v-if="results.length > 0">
@@ -40,9 +42,7 @@
           </b-col>
         </b-row>
       </b-container>
-      <Alert
-        message="Por favor, ingresa un valor mayor a 0"
-      />
+      <Alert message="Por favor, ingresa un valor mayor a 0" />
     </div>
   </div>
 </template>
@@ -63,16 +63,14 @@ export default {
   },
   data() {
     return {
-      number: 0,
-      showResult: false,
-      errorAlert: false
+      number: ''
     };
   },
   methods: {
     getFibonacciNumber(number) {
       if (number >= 0) {
         this.$store.commit('addNewResult', [number, this.fibonacci(number)]);
-        this.showResult = true;
+        this.number = '';
       } else {
         this.$store.commit('toggleAlert');
       }
@@ -151,7 +149,6 @@ export default {
     font-size: 17px;
   }
 }
-
 .results {
   margin-top: 25%;
   height: 35vh;
