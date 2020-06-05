@@ -2,7 +2,7 @@
   <div class="background-div">
     <div class="opacity">
       <b-container>
-        <b-row class="text-center row-main">
+        <b-row class="text-center row-main mx-2">
           <b-col class="col-left">
             <b-row class="justify-content-center">
               <b-col cols="10">
@@ -73,16 +73,21 @@ export default {
 </script>
 
 <style scoped>
-.background-div {
-  height: 100vh;
+.background-div::after {
   background-color: #c4bbbb;
   background-image: url('../assets/fibonacci.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-.opacity {
-  opacity: 1;
+  background-size: cover;
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+  opacity: 0.5;
 }
 .container {
   padding-top: 10%;
